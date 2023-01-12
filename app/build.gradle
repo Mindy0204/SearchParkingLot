@@ -18,8 +18,14 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("Boolean", "TIMBER_VISIABLE", "false")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField("Boolean", "TIMBER_VISIABLE", "true")
         }
     }
     compileOptions {
@@ -38,9 +44,29 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
+    // Timber
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // intercept 攔截器
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_okhttp3"
+
+    // okhttp
+    //noinspection GradleDependency
+    implementation "com.squareup.okhttp3:okhttp:$version_okhttp3"
+
+    // coroutines
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -1,2 +1,64 @@
 package com.mindyhsu.searchparkinglot.network
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.mindyhsu.searchparkinglot.BuildConfig
+import com.mindyhsu.searchparkinglot.data.LoginRequestBody
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.*
+
+private const val BASE_URL = "https://noodoe-app-development.web.app/api/"
+private const val HEADER = "Content-Type"
+private const val HEADER_TYPE = "application/json"
+private const val HEADER_NAME = "X-Parse-Application-Id"
+private const val HEADER_VALUE = "vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"
+
+private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
+// Log request data
+private val logging: HttpLoggingInterceptor =
+    HttpLoggingInterceptor().setLevel(
+        if (BuildConfig.TIMBER_VISIABLE) {
+            HttpLoggingInterceptor.Level.BODY
+        } else {
+            HttpLoggingInterceptor.Level.NONE
+        }
+    )
+private val client = OkHttpClient.Builder().addInterceptor(
+    Interceptor { chain ->
+        val newRequest = chain.request().newBuilder()
+            .addHeader(HEADER, HEADER_TYPE)
+            .build()
+
+        chain.proceed(newRequest)
+    }
+).addInterceptor(logging).build()
+
+// let Retrofit use Moshi to convert Json into Kotlin Objects
+private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .baseUrl(BASE_URL).client(client).build()
+
+interface SearchParkingLotApiService {
+    @POST("login")
+    @Headers("$HEADER: $HEADER_TYPE")
+    suspend fun login(
+        @Header(HEADER_NAME) applicationId: String = HEADER_VALUE,
+        @Body requestBody: LoginRequestBody)
+//    : UserResult
+
+    @PUT("users/{}")
+    suspend fun userUpdate(@Body requestBody: RequestBody)
+}
+
+object SearchParkingLotApi {
+    val retrofitService: SearchParkingLotApiService by lazy {
+        retrofit.create(SearchParkingLotApiService::class.java)
+    }
+}
