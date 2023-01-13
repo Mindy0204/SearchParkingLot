@@ -5,6 +5,11 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">LOG IN</string>
+    <string name="email_not_valid">Please enter valid Email address</string>
+    <string name="password_empty">Please enter password</string>
+    <string name="email_password_wrong">Email / password is wrong</string>
 
+    <string name="internet_not_connected">Internet is not connected</string>
+    <string name="operation_failed">The operation failed, please try again or check your internet</string>
 
 </resources>

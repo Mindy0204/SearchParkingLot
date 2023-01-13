@@ -9,5 +9,16 @@
         android:id="@+id/loginFragment"
         android:name="com.mindyhsu.searchparkinglot.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+    </fragment>
+    <fragment
+        android:id="@+id/parkingLotFragment"
+        android:name="com.mindyhsu.searchparkinglot.parkinglot.ParkingLotFragment"
+        android:label="fragment_parking_lot"
+        tools:layout="@layout/fragment_parking_lot" />
+
+    <!-- Global action -->
+    <action
+        android:id="@+id/navigate_to_parking_lot_fragment"
+        app:destination="@id/parkingLotFragment" />
 </navigation>
