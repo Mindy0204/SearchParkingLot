@@ -14,11 +14,11 @@ object ServiceLocator {
 
     fun provideTasksRepository(context: Context): SearchParkingLotRepository {
         synchronized(this) {
-            return searchParkingLotRepository ?: createMinMapRepository(context)
+            return searchParkingLotRepository ?: createSearchParkingLotRepository(context)
         }
     }
 
-    private fun createMinMapRepository(context: Context): SearchParkingLotRepository {
+    private fun createSearchParkingLotRepository(context: Context): SearchParkingLotRepository {
         return DefaultSearchParkingLotRepository(SearchParkingLotRemoteDataSource)
     }
 }

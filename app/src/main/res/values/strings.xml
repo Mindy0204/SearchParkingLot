@@ -9,6 +9,17 @@
     <string name="password_empty">Please enter password</string>
     <string name="email_password_wrong">Email / password is wrong</string>
 
+    <string name="time_zone">Time Zone</string>
+    <string name="parking_lot_info">Taipei City\nParking Lot Info.</string>
+    <string name="parking_lot_id">ID: %s</string>
+    <string name="parking_lot_name">Name: %s</string>
+    <string name="parking_lot_address">Address: %s</string>
+    <string name="parking_lot_total_car">Total Car: %s</string>
+    <string name="parking_lot_available_car">Available Car: %s</string>
+    <string name="charge_station_info">---------- Charge Station Info ----------</string>
+    <string name="charge_station_status_charging">Charging: %s</string>
+    <string name="charge_station_status_standby">Standby: %s</string>
+
     <string name="internet_not_connected">Internet is not connected</string>
     <string name="operation_failed">The operation failed, please try again or check your internet</string>
 

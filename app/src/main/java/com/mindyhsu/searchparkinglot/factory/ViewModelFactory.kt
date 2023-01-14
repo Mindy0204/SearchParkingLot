@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mindyhsu.searchparkinglot.data.source.SearchParkingLotRepository
 import com.mindyhsu.searchparkinglot.login.LoginViewModel
+import com.mindyhsu.searchparkinglot.parkinglot.ParkingLotViewModel
 
 class ViewModelFactory constructor(
     private val repository: SearchParkingLotRepository
@@ -14,6 +15,9 @@ class ViewModelFactory constructor(
             when {
                 isAssignableFrom(LoginViewModel::class.java) ->
                     LoginViewModel(repository)
+
+                isAssignableFrom(ParkingLotViewModel::class.java) ->
+                    ParkingLotViewModel()
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

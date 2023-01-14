@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="login_view_height">56dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
+
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
+
+    <dimen name="corner_radius_size">12dp</dimen>
+    <dimen name="shadow_size">4dp</dimen>
+
 </resources>
