@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mindyhsu.searchparkinglot.AppApplication
 import com.mindyhsu.searchparkinglot.R
 import com.mindyhsu.searchparkinglot.databinding.FragmentLoginBinding
 import com.mindyhsu.searchparkinglot.databinding.FragmentParkingLotBinding
 import com.mindyhsu.searchparkinglot.ext.getVmFactory
 import com.mindyhsu.searchparkinglot.login.LoginViewModel
+import com.mindyhsu.searchparkinglot.userupdate.UserUpdateFragmentDirections
 import org.json.JSONException
 import org.json.JSONObject
 import timber.log.Timber
@@ -36,6 +38,10 @@ class ParkingLotFragment : Fragment() {
 
         viewModel.parkingLotInfo.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        binding.parkingLotTimeZoneButton.setOnClickListener {
+            findNavController().navigate(UserUpdateFragmentDirections.navigateToUserUpdateFragment())
         }
 
         return binding.root

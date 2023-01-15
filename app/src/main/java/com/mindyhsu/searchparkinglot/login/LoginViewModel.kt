@@ -40,6 +40,7 @@ class LoginViewModel(private val repository: SearchParkingLotRepository) : ViewM
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
+                    UserManager.email = email
                     result.data
                 }
                 is Result.Fail -> {
