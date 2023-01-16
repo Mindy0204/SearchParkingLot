@@ -10,10 +10,9 @@ import com.mindyhsu.searchparkinglot.data.source.SearchParkingLotRepository
 import com.mindyhsu.searchparkinglot.login.UserManager
 import com.mindyhsu.searchparkinglot.network.LoadApiStatus
 import com.mindyhsu.searchparkinglot.util.Util
+import java.util.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.*
-
 
 class UserUpdateViewModel(private val repository: SearchParkingLotRepository) : ViewModel() {
     private val timeZoneIds = TimeZone.getAvailableIDs()

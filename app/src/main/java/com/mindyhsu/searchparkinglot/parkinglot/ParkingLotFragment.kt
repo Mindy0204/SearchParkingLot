@@ -1,47 +1,56 @@
 package com.mindyhsu.searchparkinglot.parkinglot
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.mindyhsu.searchparkinglot.AppApplication
-import com.mindyhsu.searchparkinglot.R
-import com.mindyhsu.searchparkinglot.databinding.FragmentLoginBinding
 import com.mindyhsu.searchparkinglot.databinding.FragmentParkingLotBinding
 import com.mindyhsu.searchparkinglot.ext.getVmFactory
-import com.mindyhsu.searchparkinglot.login.LoginViewModel
 import com.mindyhsu.searchparkinglot.userupdate.UserUpdateFragmentDirections
-import org.json.JSONException
-import org.json.JSONObject
-import timber.log.Timber
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.io.UnsupportedEncodingException
-import java.lang.NullPointerException
 
 class ParkingLotFragment : Fragment() {
     private val viewModel by viewModels<ParkingLotViewModel> { getVmFactory() }
     private lateinit var binding: FragmentParkingLotBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentParkingLotBinding.inflate(inflater, container, false)
 
         val adapter = ParkingLotAdapter()
         binding.parkingLotInfoRecyclerView.adapter = adapter
 
         viewModel.parkingLotInfo.observe(viewLifecycleOwner) {
+            binding.parkingLotSwipeRefresh.isRefreshing = false
             adapter.submitList(it)
         }
 
         binding.parkingLotTimeZoneButton.setOnClickListener {
             findNavController().navigate(UserUpdateFragmentDirections.navigateToUserUpdateFragment())
+        }
+
+        // Finish app when pressing back twice
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (!viewModel.isFinishApp) {
+                        viewModel.isFinishApp = true
+                    } else {
+                        activity?.finish()
+                    }
+                }
+            }
+        )
+
+        binding.parkingLotSwipeRefresh.setOnRefreshListener {
+            viewModel.getParkingLotInfo()
         }
 
         return binding.root

@@ -17,5 +17,4 @@ class DefaultSearchParkingLotRepository(private val remoteDataSource: SearchPark
     ): Result<UpdateResponse> {
         return remoteDataSource.updateUser(sessionToken, objectId, userUpdateRequestBody)
     }
-
 }

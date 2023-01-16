@@ -15,15 +15,14 @@ import com.mindyhsu.searchparkinglot.databinding.FragmentUserUpdateBinding
 import com.mindyhsu.searchparkinglot.ext.getVmFactory
 import com.mindyhsu.searchparkinglot.login.UserManager
 import com.mindyhsu.searchparkinglot.network.LoadApiStatus
-import timber.log.Timber
-
 
 class UserUpdateFragment : Fragment() {
     private val viewModel by viewModels<UserUpdateViewModel> { getVmFactory() }
     private lateinit var binding: FragmentUserUpdateBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentUserUpdateBinding.inflate(inflater, container, false)

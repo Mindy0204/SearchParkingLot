@@ -12,4 +12,4 @@ data class ParkingLotDisplayInfo(
     val availableCar: Int = -1,
     val statusCharging: Int = -1,
     val statusStandby: Int = -1
-): Parcelable
+) : Parcelable

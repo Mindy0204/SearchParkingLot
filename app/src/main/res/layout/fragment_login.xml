@@ -8,6 +8,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email_layout"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_view_height"
         android:layout_marginStart="@dimen/margin_16dp"
@@ -24,13 +25,13 @@
             android:id="@+id/login_email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="***REMOVED***"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_password_layout"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_view_height"
         android:layout_margin="@dimen/margin_16dp"
@@ -45,7 +46,6 @@
             android:id="@+id/login_password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="***REMOVED***"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_view_height"
         android:layout_margin="@dimen/margin_16dp"
+        android:background="@color/theme_primary"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_password_layout"

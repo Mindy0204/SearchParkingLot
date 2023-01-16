@@ -7,12 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.mindyhsu.searchparkinglot.R
 import com.mindyhsu.searchparkinglot.data.LoginRequestBody
 import com.mindyhsu.searchparkinglot.data.LoginResponse
+import com.mindyhsu.searchparkinglot.data.Result
 import com.mindyhsu.searchparkinglot.data.source.SearchParkingLotRepository
 import com.mindyhsu.searchparkinglot.network.LoadApiStatus
-import kotlinx.coroutines.launch
-import com.mindyhsu.searchparkinglot.data.Result
 import com.mindyhsu.searchparkinglot.util.Util.getString
-import kotlin.math.log
+import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: SearchParkingLotRepository) : ViewModel() {
 

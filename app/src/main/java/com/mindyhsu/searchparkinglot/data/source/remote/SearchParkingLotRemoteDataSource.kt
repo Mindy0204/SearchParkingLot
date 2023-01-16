@@ -4,9 +4,8 @@ import com.mindyhsu.searchparkinglot.R
 import com.mindyhsu.searchparkinglot.data.*
 import com.mindyhsu.searchparkinglot.data.source.SearchParkingLotDataSource
 import com.mindyhsu.searchparkinglot.network.SearchParkingLotApi
-import com.mindyhsu.searchparkinglot.util.Util.isInternetConnected
 import com.mindyhsu.searchparkinglot.util.Util.getString
-import timber.log.Timber
+import com.mindyhsu.searchparkinglot.util.Util.isInternetConnected
 
 private const val HEADER_VALUE_APPLICATION_ID = "vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"
 
@@ -24,7 +23,6 @@ object SearchParkingLotRemoteDataSource : SearchParkingLotDataSource {
         } catch (e: Exception) {
             Result.Error(e)
         }
-
     }
 
     override suspend fun updateUser(
@@ -48,5 +46,4 @@ object SearchParkingLotRemoteDataSource : SearchParkingLotDataSource {
             Result.Error(e)
         }
     }
-
 }

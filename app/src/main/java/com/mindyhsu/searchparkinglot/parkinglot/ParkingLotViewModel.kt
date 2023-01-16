@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mindyhsu.searchparkinglot.AppApplication
 import com.mindyhsu.searchparkinglot.data.ParkingLotDisplayInfo
+import java.io.InputStream
 import org.json.JSONObject
 import timber.log.Timber
-import java.io.InputStream
-
 
 class ParkingLotViewModel : ViewModel() {
     private val allParkingLotInfo = loadJSONFromAssets(FILE_ALL)?.let { JSONObject(it) }
@@ -18,7 +17,14 @@ class ParkingLotViewModel : ViewModel() {
     val parkingLotInfo: LiveData<List<ParkingLotDisplayInfo>>
         get() = _parkingLotInfo
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
+    var isFinishApp = false
+
     init {
+        _isLoading.value = true
         getParkingLotInfo()
     }
 
@@ -37,7 +43,8 @@ class ParkingLotViewModel : ViewModel() {
         return jsonString
     }
 
-    private fun getParkingLotInfo() {
+    /** Combine required display data */
+    fun getParkingLotInfo() {
         try {
             val data = allParkingLotInfo?.getJSONObject(JSON_DATA)
             val parkList = data?.getJSONArray(JSON_PARK)
@@ -62,12 +69,13 @@ class ParkingLotViewModel : ViewModel() {
                 }
             }
             _parkingLotInfo.value = dataList
-
+            _isLoading.value = false
         } catch (e: Exception) {
             Timber.e("getParkingLotInfo Exception = ${e.message}")
         }
     }
 
+    /** Find the same parking lot with id from the available parking lot list */
     private fun getAvailableParkingLot(parkItemId: String): Map<String, Int> {
         val availableMap = mutableMapOf<String, Int>()
         try {
