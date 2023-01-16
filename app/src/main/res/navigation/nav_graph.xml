@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mindyhsu.searchparkinglot.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/parkingLotFragment"
+        android:name="com.mindyhsu.searchparkinglot.parkinglot.ParkingLotFragment"
+        android:label="fragment_parking_lot"
+        tools:layout="@layout/fragment_parking_lot" />
+
+    <fragment
+        android:id="@+id/userUpdateFragment"
+        android:name="com.mindyhsu.searchparkinglot.userupdate.UserUpdateFragment"
+        android:label="fragment_user_update"
+        tools:layout="@layout/fragment_user_update" />
+
+    <!-- Global action -->
+    <action
+        android:id="@+id/navigate_to_parking_lot_fragment"
+        app:destination="@id/parkingLotFragment" />
+
+    <action
+        android:id="@+id/navigate_to_user_update_fragment"
+        app:destination="@id/userUpdateFragment" />
 </navigation>

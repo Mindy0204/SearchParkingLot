@@ -1,5 +1,33 @@
 <resources>
     <string name="app_name">SearchParkingLot</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Login  -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOG IN</string>
+    <string name="email_not_valid">Please enter valid Email address</string>
+    <string name="password_empty">Please enter password</string>
+    <string name="email_password_wrong">Email / password is wrong</string>
+
+    <!--  Parking Lot  -->
+    <string name="time_zone">Time Zone</string>
+    <string name="parking_lot_info">Taipei City\nParking Lot Info.</string>
+    <string name="parking_lot_id">ID: %s</string>
+    <string name="parking_lot_name">Name: %s</string>
+    <string name="parking_lot_address">Address: %s</string>
+    <string name="parking_lot_total_car">Total Car: %s</string>
+    <string name="parking_lot_available_car">Available Car: %s</string>
+    <string name="charge_station_info">---------- Charge Station Info ----------</string>
+    <string name="charge_station_status_charging">Charging: %s</string>
+    <string name="charge_station_status_standby">Standby: %s</string>
+
+    <!--  User Update  -->
+    <string name="user_update_email">Email: %s</string>
+    <string name="user_update_set_time_zone">Set Time Zone</string>
+    <string name="user_update_set_time_zone_success">Successfully set time zone</string>
+
+    <string name="internet_not_connected">Internet is not connected</string>
+    <string name="operation_failed">The operation failed, please try again or check your internet</string>
+
 </resources>

@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".parkinglot.ParkingLotFragment">
 
-</FrameLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/parking_lot_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/parking_lot_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/parking_lot_info"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/parking_lot_toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/parking_lot_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/parking_lot_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/parking_lot_toolbar" />
+
+    <Button
+        android:id="@+id/parking_lot_time_zone_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:text="@string/time_zone"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintBottom_toBottomOf="@+id/parking_lot_toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/parking_lot_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/parking_lot_toolbar" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/parking_lot_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parking_lot_toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parking_lot_info_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_parking_lot_info" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
