@@ -3,11 +3,13 @@ package com.mindyhsu.searchparkinglot.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mindyhsu.searchparkinglot.BuildConfig
 import com.mindyhsu.searchparkinglot.data.LoginRequestBody
+import com.mindyhsu.searchparkinglot.data.LoginResponse
+import com.mindyhsu.searchparkinglot.data.UpdateResponse
+import com.mindyhsu.searchparkinglot.data.UserUpdateRequestBody
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -16,8 +18,9 @@ import retrofit2.http.*
 private const val BASE_URL = "https://noodoe-app-development.web.app/api/"
 private const val HEADER = "Content-Type"
 private const val HEADER_TYPE = "application/json"
-private const val HEADER_NAME = "X-Parse-Application-Id"
-private const val HEADER_VALUE = "vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD"
+private const val HEADER_NAME_APPLICATION_ID = "X-Parse-Application-Id"
+private const val HEADER_NAME_SESSION_TOKEN = "X-Parse-Session-Token"
+private const val PATH_OBJECT_ID = "objectId"
 
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
@@ -49,12 +52,17 @@ interface SearchParkingLotApiService {
     @POST("login")
     @Headers("$HEADER: $HEADER_TYPE")
     suspend fun login(
-        @Header(HEADER_NAME) applicationId: String = HEADER_VALUE,
-        @Body requestBody: LoginRequestBody)
-//    : UserResult
+        @Header(HEADER_NAME_APPLICATION_ID) applicationId: String,
+        @Body requestBody: LoginRequestBody
+    ): LoginResponse
 
-    @PUT("users/{}")
-    suspend fun userUpdate(@Body requestBody: RequestBody)
+    @PUT("users/{objectId}")
+    suspend fun updateUser(
+        @Header(HEADER_NAME_APPLICATION_ID) applicationId: String,
+        @Header(HEADER_NAME_SESSION_TOKEN) sessionToken: String,
+        @Path(PATH_OBJECT_ID) objectId: String,
+        @Body requestBody: UserUpdateRequestBody
+    ): UpdateResponse
 }
 
 object SearchParkingLotApi {

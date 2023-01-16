@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.loginResult.observe(viewLifecycleOwner) {
-            if (it) {
+            if (it != null) {
                 findNavController().navigate(LoginFragmentDirections.navigateToParkingLotFragment())
             } else {
                 Toast.makeText(context, getString(R.string.email_password_wrong), Toast.LENGTH_SHORT)

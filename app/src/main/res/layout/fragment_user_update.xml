@@ -20,7 +20,7 @@
         android:layout_margin="@dimen/margin_16dp"
         android:textAlignment="center"
         android:textSize="@dimen/text_size"
-        app:layout_constraintBottom_toTopOf="@+id/user_update_time_zone"
+        app:layout_constraintBottom_toTopOf="@+id/user_update_time_zone_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_update_toolbar"
@@ -28,23 +28,37 @@
         tools:text="@string/user_update_email" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_update_time_zone"
+        android:id="@+id/user_update_time_zone_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16dp"
         android:hint="@string/time_zone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/user_update_set_time_zone_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_update_email_text">
 
         <AutoCompleteTextView
+            android:id="@+id/user_update_time_zone_choice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
-            app:simpleItems="@array/time_zone_choice" />
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/user_update_set_time_zone_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:text="@string/user_update_set_time_zone"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_update_time_zone_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

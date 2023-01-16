@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mindy/.gradle/caches/transforms-3/508b15e6ae9511f5837aea171915cfcb/transformed/appcompat-1.5.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.23471569046601112" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/drawable/card_view_frame.xml" value="0.151" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/activity_main.xml" value="0.2859375" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/fragment_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/fragment_parking_lot.xml" value="0.22" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/fragment_user_update.xml" value="0.22" />
+        <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/item_drop_down.xml" value="0.23471569046601112" />
+        <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/list_item_drop_down.xml" value="0.11470956957793564" />
         <entry key="..\:/Users/mindy/AndroidStudioProjects/SearchParkingLot/app/src/main/res/layout/list_item_parking_lot_info.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/mindy/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.23471569046601112" />
       </map>
     </option>
   </component>

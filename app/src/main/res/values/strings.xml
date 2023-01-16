@@ -24,12 +24,8 @@
 
     <!--  User Update  -->
     <string name="user_update_email">Email: %s</string>
-    <string name="item_1">Item 1</string>
-    <string name="item_2">Item 2</string>
-    <string-array name="time_zone_choice">
-        <item>@string/item_1</item>
-        <item>@string/item_2</item>
-    </string-array>
+    <string name="user_update_set_time_zone">Set Time Zone</string>
+    <string name="user_update_set_time_zone_success">Successfully set time zone</string>
 
     <string name="internet_not_connected">Internet is not connected</string>
     <string name="operation_failed">The operation failed, please try again or check your internet</string>
