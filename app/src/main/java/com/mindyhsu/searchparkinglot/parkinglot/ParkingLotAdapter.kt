@@ -34,11 +34,15 @@ class ParkingLotAdapter :
 
             // available
             if (item.availableCar > -1) {
+                binding.infoAvailableCarText.visibility = View.VISIBLE
                 binding.infoAvailableCarText.text = AppApplication.instance.getString(
                     R.string.parking_lot_available_car,
                     item.availableCar.toString()
                 )
+            } else {
+                binding.infoAvailableCarText.visibility = View.GONE
             }
+
             if (item.statusCharging > -1 && item.statusStandby > -1) {
                 binding.infoChargeStationText.visibility = View.VISIBLE
                 binding.infoStatusChargingText.visibility = View.VISIBLE

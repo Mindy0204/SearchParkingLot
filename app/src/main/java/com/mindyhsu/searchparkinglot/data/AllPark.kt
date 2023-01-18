@@ -1,0 +1,30 @@
+package com.mindyhsu.searchparkinglot.data
+
+data class AllPark(
+    val id: String,
+    val area: String,
+    val name: String,
+    val type1: String?,
+    val type2: String,
+    val summary: String,
+    val address: String,
+    val tel: String,
+    val payex: String,
+    val serviceTime: String,
+    val tw97x: String,
+    val tw97y: String,
+    val totalcar: Int,
+    val totalmotor: Int,
+    val totalbike: Int,
+    val totalbus: Int,
+    val Pregnancy_First: String?,
+    val Handicap_First: String?,
+    val Taxi_OneHR_Free: String?,
+    val AED_Equipment: String?,
+    val CellSignal_Enhancement: String?,
+    val Accessibility_Elevator: String?,
+    val Phone_Charge: String?,
+    val Child_Pickup_Area: String?,
+    val FareInfo: FareInfo,
+    val EntranceCoord: EntranceCoord
+)

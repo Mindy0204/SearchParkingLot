@@ -23,10 +23,18 @@ class ParkingLotFragment : Fragment() {
     ): View {
         binding = FragmentParkingLotBinding.inflate(inflater, container, false)
 
+        viewModel.allParkingLotList.observe(viewLifecycleOwner) { all ->
+            viewModel.availableParkingLotList.observe(viewLifecycleOwner) { available ->
+                if (all != null && available != null) {
+                    viewModel.combineDisplayData()
+                }
+            }
+        }
+
         val adapter = ParkingLotAdapter()
         binding.parkingLotInfoRecyclerView.adapter = adapter
 
-        viewModel.parkingLotInfo.observe(viewLifecycleOwner) {
+        viewModel.parkingLotDisplayInfo.observe(viewLifecycleOwner) {
             binding.parkingLotSwipeRefresh.isRefreshing = false
             adapter.submitList(it)
         }
@@ -50,7 +58,8 @@ class ParkingLotFragment : Fragment() {
         )
 
         binding.parkingLotSwipeRefresh.setOnRefreshListener {
-            viewModel.getParkingLotInfo()
+            viewModel.getAllParkingLotList()
+            viewModel.getAvailableParkingLotList()
         }
 
         return binding.root

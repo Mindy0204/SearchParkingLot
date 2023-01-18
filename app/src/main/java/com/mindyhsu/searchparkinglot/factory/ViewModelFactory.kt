@@ -18,7 +18,7 @@ class ViewModelFactory constructor(
                     LoginViewModel(repository)
 
                 isAssignableFrom(ParkingLotViewModel::class.java) ->
-                    ParkingLotViewModel()
+                    ParkingLotViewModel(repository)
 
                 isAssignableFrom(UserUpdateViewModel::class.java) ->
                     UserUpdateViewModel(repository)

@@ -25,6 +25,14 @@ object SearchParkingLotRemoteDataSource : SearchParkingLotDataSource {
         }
     }
 
+    override suspend fun getAllParkingLotList(): Result<AllParkingLot> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAvailableParkingLotList(): Result<AvailableParkingLot> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun updateUser(
         sessionToken: String,
         objectId: String,
